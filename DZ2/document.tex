@@ -69,7 +69,7 @@
 	\begin{enumerate}
 		{\Large\item $(01)^*$}
 		\begin{enumerate}
-			\item Фиксируем $\forall n=N$ возьмём слово $\alpha=0^N1^N,\ \alpha \in Perm(R),\ |\omega|=2N>N $, так как в лемме $|xy|\leq N, \text{как бы мы не взяли }\\ xy,\ y=0^i \implies xy^kz \text{ выходит за пределы языка при } \forall k\neq 1,\text{ так как тогда} \text{количество нулей }\neq\text{ количество единиц} \implies\ \alpha\text{ уже не является перестановкой символов в слове}\\ \text{состоящем из пар нулей и единиц}\implies$ язык $Perm(R)$ не регулярный\\
+			\item Фиксируем $\forall n=N$ возьмём слово $\alpha=0^N1^N,\ \alpha \in Perm(R),\ |\alpha|=2N>N $, так как в лемме $|xy|\leq N, \text{как бы мы не взяли }\\ xy,\ y=0^i \implies xy^kz \text{ выходит за пределы языка при } \forall k\neq 1,\text{ так как тогда} \text{количество нулей }\neq\text{ количество единиц} \implies\ \alpha\text{ уже не является перестановкой символов в слове}\\ \text{состоящем из пар нулей и единиц}\implies$ язык $Perm(R)$ не регулярный\\
 			\item $S\rightarrow 0S1S\ | \ 1S0S \ | \ \lambda $\\
 		\end{enumerate}
 		{\Large\item $0^*+1^*$}
@@ -81,8 +81,8 @@
 		\end{enumerate}
 		{\Large\item $(012)^*$}
 		\begin{enumerate}
-			\item Фиксируем $\forall n=N$ возьмём слово $\alpha=0^N1^N2^N,\ \alpha \in Perm(R),\ |\omega|=3N>N $, так как в лемме $|xy|\leq N, \text{как бы мы не взяли }\\ xy,\ y=0^i \implies xy^kz \text{ выходит за пределы языка при } \forall k\neq 1,\text{ так как тогда} \text{количество нулей }\neq\text{ количество единиц и двоек} \implies\ \alpha\text{ уже не является перестановкой символов в слове}\\ \text{состоящем из троек нулей, единиц и двоек}\implies$ язык $Perm(R)$ не регулярный\\\\
-			\item Фиксируем $\forall p=N$ возьмём слово $\alpha=0^N1^N2^N,\ \alpha \in Perm(R),\ |\omega|=3N>N $, так как в лемме $|v\omega x|\leq N, \text{как бы мы не взяли }\\ v\omega x,\ \text{оно никогда не сможет включать в себя и единицы}\\\text{ и двойки и нули, а значит если начать что то наращивать}\\ \text{в этом слове, тех цифр что в нем не присутствуют станет}\\\text{меньше чем других} \implies uv^\omega x^ky \text{ выходит за пределы языка}\\ \text{при } \forall k\neq 1,\implies$ язык $Perm(R)$ не контекстно-свободный\\\\	
+			\item Фиксируем $\forall n=N$ возьмём слово $\alpha=0^N1^N2^N,\ \alpha \in Perm(R),\ |\alpha|=3N>N $, так как в лемме $|xy|\leq N, \text{как бы мы не взяли }\\ xy,\ y=0^i \implies xy^kz \text{ выходит за пределы языка при } \forall k\neq 1,\text{ так как тогда} \text{количество нулей }\neq\text{ количество единиц и двоек} \implies\ \alpha\text{ уже не является перестановкой символов в слове}\\ \text{состоящем из троек нулей, единиц и двоек}\implies$ язык $Perm(R)$ не регулярный\\\\
+			\item Фиксируем $\forall p=N$ возьмём слово $\alpha=0^N1^N2^N,\ \alpha \in Perm(R),\ |\alpha|=3N>N $, так как в лемме $|v\omega x|\leq N, \text{как бы мы не взяли }\\ v\omega x,\ \text{оно никогда не сможет включать в себя и единицы}\\\text{ и двойки и нули, а значит если начать что то наращивать}\\ \text{в этом слове, тех цифр что в нем не присутствуют станет}\\\text{меньше чем других} \implies uv^k\omega x^ky \text{ выходит за пределы языка}\\ \text{при } \forall k\neq 1,\implies$ язык $Perm(R)$ не контекстно-свободный\\\\	
 		\end{enumerate}
 	\end{enumerate}	
 	{\huge\textbf{Упражение 5}}\\\\
