@@ -1,0 +1,302 @@
+\documentclass[10pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[english, russian]{babel}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage[pdf]{graphviz}
+\usepackage{morewrites}
+
+
+\begin{document}
+\begin{enumerate}
+{\Large\item Построить конечный автомат распознающий язык}
+	\begin{enumerate}[label*=\arabic*.]
+		{\large\item $L=\{\omega \in \{a,b,c\}^* |\  |\omega|_c=1\}$} \\
+		\digraph{1.1}
+		{\large\item $L=\{\omega \in \{a,b\}^* |\  |\omega|_a\leq2,|\omega|_b\geq2\}$}\\ \digraph{1.2}
+		{\large\item $L=\{\omega \in \{a,b\}^* |\  |\omega|_a\neq|\omega|_b\}$} \\
+		Проверим является ли данный язык регулярным
+		Для этого используем лемму о разрастании\\
+		Докажем для $\bar{L}$
+		Фиксируем $\forall n=N$ возьмём слово $\omega=b^Na^N, оно \in \bar{L} $, так как в лемме $|xy|\leq N, \text{как бы мы не взяли } x , y,\ y=b^i \implies xy^kz \text{выходит за пределы языка при } 
+		\forall k \implies$ язык $\bar{L}$ не регулярный $\implies$ язык L тоже не регулярный\\
+		{\large\item $L=\{\omega \in \{a,b\}^* |\ \omega\omega=\omega\omega\omega\}$}\\
+		Данный автомат должен распознавать язык где любое слово взятое дважды равно любому слову взятому трижды, такое возможно только если все слова $|\omega|=0$\\
+		\digraph{1.4}
+	\end{enumerate}
+{\Large\item Построить конечный автомат используя прямое произведение}
+	\begin{enumerate}[label*=\arabic*.]
+		{\large\item $L_1=\{\omega \in \{a,b\}^* |\  |\omega|_a\geq 0 \land |\omega|_b\geq 0\}$} \\
+		\\
+		$A=\langle \sum_a, Q_a, s_a, T_a, \sigma_a \rangle$\\
+		\begin{itemize}
+			\item $\sum_a=\{a,b\}$\\
+			\item $Q_a=\{a_1,a_2,a_3\}$\\
+			\item $s_a={a_1}$\\
+			\item $T_a={a_3}$\\
+			\item $\sigma_a=$\\
+			\digraph{2.1(a)}\\
+		\end{itemize}
+		$B=\langle \sum_b, Q_b, s_b, T_b, \sigma_b \rangle$\\
+		\begin{itemize}
+			\item $\sum_b=\{a,b\}$\\
+			\item $Q_b=\{b_1,b_2,b_3\}$\\
+			\item $s_b={b_1}$\\
+			\item $T_b={b_3}$\\
+			\item $\sigma_b=$\\
+			\digraph{2.1(b)}\\
+		\end{itemize}
+		$A\times B=\langle \sum_a\cup\sum_b, Q_a\times Q_b, \langle s_a,s_b\rangle, T_a\times T_b, \langle\sigma_a(q_a,c),\sigma_b(q_b,c) \rangle$
+		\begin{itemize}
+			\item $\sum=\{a,b\}$\\
+			\item $Q=\{\langle a_1,b_1\rangle,\langle a_1,b_2\rangle,\langle a_1,b_3\rangle,\langle a_2,b_1\rangle,\langle a_2,b_2\rangle,\langle a_2,b_3\rangle,\langle a_3,b_1\rangle,\langle a_3,b_2\rangle,\langle a_3,b_3\rangle\}$\\
+			\item $s=\langle a_1,b_1\rangle$\\
+			\item $T=\langle a_3,b_3\rangle$\\
+			\item $\sigma_b$\\
+			\begin{tabular}{ | l | l | l | }
+				\hline
+				 & a & b \\ \hline
+				$\langle a_1,b_1\rangle$ & $\langle a_1,b_2\rangle$ & $\langle a_2,b_1\rangle$ \\
+				$\langle a_1,b_2\rangle$ & $\langle a_1,b_3\rangle$ & $\langle a_2,b_2\rangle$ \\
+				$\langle a_2,b_1\rangle$ & $\langle a_2,b_2\rangle$ & $\langle a_3,b_1\rangle$ \\
+				$\langle a_2,b_2\rangle$ & $\langle a_2,b_3\rangle$ & $\langle a_3,b_2\rangle$ \\
+				$\langle a_1,b_3\rangle$ & $\langle a_1,b_3\rangle$ & $\langle a_2,b_3\rangle$ \\
+				$\langle a_3,b_1\rangle$ & $\langle a_3,b_2\rangle$ & $\langle a_3,b_1\rangle$ \\
+				$\langle a_2,b_3\rangle$ & $\langle a_2,b_3\rangle$ & $\langle a_3,b_3\rangle$ \\
+				$\langle a_3,b_2\rangle$ & $\langle a_3,b_3\rangle$ & $\langle a_3,b_2\rangle$ \\
+				$\langle a_3,b_3\rangle$ & $\langle a_3,b_3\rangle$ & $\langle a_3,b_3\rangle$ \\
+				\hline
+			\end{tabular}
+			\\
+		\end{itemize}
+		\digraph{2.1(c)}\\
+		{\large\item $L_2=\{\omega \in \{a,b\}^* |\  |\omega|\geq 3 \land |\omega| \text{-нечётное}\}$} \\
+		\\
+		$A=\langle \sum_a, Q_a, s_a, T_a, \sigma_a \rangle$\\
+		\begin{itemize}
+			\item $\sum_a=\{a,b\}$\\
+			\item $Q_a=\{a_1,a_2,a_3,a_4\}$\\
+			\item $s_a={a_1}$\\
+			\item $T_a={a_4}$\\
+			\item $\sigma_a=$\\
+			\digraph{2.2(a)}\\
+		\end{itemize}
+		$B=\langle \sum_b, Q_b, s_b, T_b, \sigma_b \rangle$\\
+		\begin{itemize}
+			\item $\sum_b=\{a,b\}$\\
+			\item $Q_b=\{b_1,b_2\}$\\
+			\item $s_b={b_1}$\\
+			\item $T_b={b_2}$\\
+			\item $\sigma_b=$\\
+			\digraph{2.2(b)}\\
+		\end{itemize}
+		$A\times B=\langle \sum_a\cup\sum_b, Q_a\times Q_b, \langle s_a,s_b\rangle, T_a\times T_b, \langle\sigma_a(q_a,c),\sigma_b(q_b,c) \rangle$
+		\begin{itemize}
+			\item $\sum=\{a,b\}$\\
+			\item $Q=\{\langle a_1,b_1\rangle,\langle a_1,b_2\rangle,\langle a_2,b_1\rangle,\langle a_2,b_2\rangle,\langle a_3,b_1\rangle,\langle a_3,b_2\rangle, \langle a_4,b_1\rangle\,\langle a_4,b_2\rangle\}$\\
+			\item $s=\langle a_1,b_1\rangle$\\
+			\item $T=\langle a_4,b_2\rangle$\\
+			\item $\sigma_b$\\
+			\begin{tabular}{ | l | l | l | }
+				\hline
+				& a & b \\ \hline
+				$\langle a_1,b_1\rangle$ & $\langle a_2,b_2\rangle$ & $\langle a_2,b_2\rangle$ \\
+				$\langle a_2,b_2\rangle$ & $\langle a_3,b_1\rangle$ & $\langle a_3,b_1\rangle$ \\
+				$\langle a_3,b_1\rangle$ & $\langle a_4,b_2\rangle$ & $\langle a_4,b_2\rangle$ \\
+				$\langle a_4,b_2\rangle$ & $\langle a_4,b_1\rangle$ & $\langle a_4,b_1\rangle$ \\
+				$\langle a_4,b_1\rangle$ & $\langle a_4,b_2\rangle$ & $\langle a_4,b_2\rangle$ \\
+				\hline
+			\end{tabular}
+			\\
+		\end{itemize}
+		\digraph{2.2(c)}\\
+		{\large\item $L_3=\{\omega \in \{a,b\}^* |\  |\omega|_a\text{-чётно} \land |\omega|_b\text{-кратно трём}\}$} \\
+		\\
+		$A=\langle \sum_a, Q_a, s_a, T_a, \sigma_a \rangle$\\
+		\begin{itemize}
+			\item $\sum_a=\{a,b\}$\\
+			\item $Q_a=\{a_1,a_2\}$\\
+			\item $s_a={a_1}$\\
+			\item $T_a={a_1}$\\
+			\item $\sigma_a=$\\
+			\digraph{2.3(a)}\\
+		\end{itemize}
+		$B=\langle \sum_b, Q_b, s_b, T_b, \sigma_b \rangle$\\
+		\begin{itemize}
+			\item $\sum_b=\{a,b\}$\\
+			\item $Q_b=\{b_1,b_2,b_3\}$\\
+			\item $s_b={b_1}$\\
+			\item $T_b={b_1}$\\
+			\item $\sigma_b=$\\
+			\digraph{2.3(b)}\\
+		\end{itemize}
+		$A\times B=\langle \sum_a\cup\sum_b, Q_a\times Q_b, \langle s_a,s_b\rangle, T_a\times T_b, \langle\sigma_a(q_a,c),\sigma_b(q_b,c) \rangle$
+		\begin{itemize}
+			\item $\sum=\{a,b\}$\\
+			\item $Q=\{\langle a_1,b_1\rangle,\langle a_1,b_2\rangle,\langle a_1,b_3\rangle,\langle a_2,b_1\rangle,\langle a_2,b_2\rangle,\langle a_2,b_3\rangle\}$\\
+			\item $s=\langle a_1,b_1\rangle$\\
+			\item $T=\langle a_1,b_1\rangle$\\
+			\item $\sigma$\\
+			\begin{tabular}{ | l | l | l | }
+				\hline
+				& a & b \\ \hline
+				$\langle a_1,b_1\rangle$ & $\langle a_2,b_1\rangle$ & $\langle a_1,b_2\rangle$ \\
+				$\langle a_2,b_1\rangle$ & $\langle a_1,b_1\rangle$ & $\langle a_2,b_2\rangle$ \\
+				$\langle a_1,b_2\rangle$ & $\langle a_2,b_2\rangle$ & $\langle a_1,b_3\rangle$ \\
+				$\langle a_2,b_2\rangle$ & $\langle a_1,b_2\rangle$ & $\langle a_2,b_3\rangle$ \\
+				$\langle a_1,b_3\rangle$ & $\langle a_2,b_3\rangle$ & $\langle a_1,b_1\rangle$ \\
+				$\langle a_2,b_3\rangle$ & $\langle a_1,b_3\rangle$ & $\langle a_2,b_1\rangle$ \\
+				\hline
+			\end{tabular}
+			\\
+		\end{itemize}
+		\digraph{2.3(c)}\\
+		{\large\item $L_4=\bar{L_3}$} \\
+		\\
+		$\bar{L_3}=\langle \sum, Q, s, T, \sigma \rangle$
+		\begin{itemize}
+			\item $\sum=\{a,b\}$\\
+			\item $Q=\{1,2,3,4,5,6\}$\\
+			\item $s=1$\\
+			\item $T=\{2,3,4,5,6\}$\\
+			\item $\sigma=$\\
+			\digraph{2.4}\\
+		\end{itemize}
+		{\large\item $L_5=L_2 \setminus L_3=L_2 \cap\bar{L_3}=\langle \sum, Q, s, T, \sigma \rangle$} \\
+		Автомат A:\\
+		\digraph{2.5(a)}\\
+		Автомат B:\\
+		\digraph{2.4}\\
+		\begin{itemize}
+			\item $\sum=\{a,b\}$\\
+			\item $Q=\{\langle a_1,b_1\rangle,\langle a_1,b_2\rangle,\langle a_1,b_3\rangle,\langle a_1,b_4\rangle,\langle a_1,b_5\rangle,\langle a_1,b_6\rangle,\langle a_2,b_1\rangle,\langle a_2,b_2\rangle,\langle a_2,b_3\rangle\,\langle a_2,b_4\rangle\,\\ \langle a_2,b_5\rangle\,\langle a_2,b_6\rangle,\langle a_3,b_1\rangle,\langle a_3,b_2\rangle,\langle a_3,b_3\rangle,\langle a_3,b_4\rangle,\langle a_3,b_5\rangle,\langle a_3,b_6\rangle,\langle a_4,b_1\rangle,\langle a_4,b_2\rangle,\langle a_4,b_3\rangle\,\\ \langle a_4,b_4\rangle\,\langle a_4,b_5\rangle\,\langle a_4,b_6\rangle,\langle a_5,b_1\rangle,\langle a_5,b_2\rangle,\langle a_5,b_3\rangle\,\langle a_5,b_4\rangle\,\langle a_5,b_5\rangle\,\langle a_5,b_6\rangle\}$\\
+			\item $s=a1b1$\\
+			\item $T=\{\langle a4,b2\rangle,\langle a4,b3\rangle,\langle a4,b4\rangle,\langle a4,b5\rangle,\langle a4,b6\rangle\}$\\
+			\item $\sigma=$\\
+			\begin{tabular}{ | l | l | l | }
+				\hline
+				& a & b \\ \hline
+				$\langle a_1,b_1\rangle$ & $\langle a_2,b_2\rangle$ & $\langle a_2,b_4\rangle$ \\
+				$\langle a_2,b_2\rangle$ & $\langle a_3,b_1\rangle$ & $\langle a_3,b_3\rangle$ \\
+				$\langle a_2,b_4\rangle$ & $\langle a_3,b_3\rangle$ & $\langle a_3,b_5\rangle$ \\
+				$\langle a_3,b_1\rangle$ & $\langle a_4,b_2\rangle$ & $\langle a_4,b_4\rangle$ \\
+				$\langle a_3,b_3\rangle$ & $\langle a_4,b_4\rangle$ & $\langle a_4,b_5\rangle$ \\
+				$\langle a_3,b_5\rangle$ & $\langle a_4,b_6\rangle$ & $\langle a_4,b_1\rangle$ \\
+				$\langle a_4,b_1\rangle$ & $\langle a_5,b_2\rangle$ & $\langle a_5,b_4\rangle$ \\
+				$\langle a_4,b_2\rangle$ & $\langle a_5,b_1\rangle$ & $\langle a_5,b_3\rangle$ \\
+				$\langle a_4,b_3\rangle$ & $\langle a_5,b_4\rangle$ & $\langle a_5,b_6\rangle$ \\
+				$\langle a_4,b_4\rangle$ & $\langle a_5,b_3\rangle$ & $\langle a_5,b_5\rangle$ \\
+				$\langle a_4,b_5\rangle$ & $\langle a_5,b_6\rangle$ & $\langle a_5,b_1\rangle$ \\
+				$\langle a_4,b_6\rangle$ & $\langle a_5,b_5\rangle$ & $\langle a_5,b_2\rangle$ \\
+				$\langle a_5,b_1\rangle$ & $\langle a_4,b_2\rangle$ & $\langle a_4,b_4\rangle$ \\
+				$\langle a_5,b_2\rangle$ & $\langle a_4,b_1\rangle$ & $\langle a_4,b_3\rangle$ \\
+				$\langle a_5,b_3\rangle$ & $\langle a_4,b_4\rangle$ & $\langle a_4,b_6\rangle$ \\
+				$\langle a_5,b_4\rangle$ & $\langle a_4,b_3\rangle$ & $\langle a_4,b_5\rangle$ \\
+				$\langle a_5,b_5\rangle$ & $\langle a_4,b_6\rangle$ & $\langle a_4,b_1\rangle$ \\
+				$\langle a_5,b_6\rangle$ & $\langle a_4,b_5\rangle$ & $\langle a_4,b_2\rangle$ \\
+				\hline
+			\end{tabular}
+			\\
+			\digraph{2.5(b)}\\
+		\end{itemize}
+	\end{enumerate}
+	{\Large\item Построить минимальный ДКА по регулярному выражению}
+	\begin{enumerate}[label*=\arabic*.]
+		{\large\item $(ab+aba)^*a$} \\
+		Строим НКА по регулярному выражению\\
+		\digraph{3.1(a)}\\
+		Преобразуем в минимальный ДКА\\
+		Его таблица переходов:
+		\begin{tabular}{ | l | l | l | }
+			\hline
+			& a & b \\ \hline
+			1 (1) & 12,5,6 & - \\
+			12,5,6 (2) & - & 7,8 \\
+			7,8 (3) & 12,5,6,9 & - \\
+			12,5,6,9 (4) & 12,5,6 & 7,8 \\
+			\hline
+		\end{tabular}\\
+		\digraph{3.1(b)}\\
+		{\large\item $a(a(ab)^*b)^*(ab)^*$} \\
+		Строим НКА по регулярному выражению\\
+		\digraph{3.2(a)}\\
+		Преобразуем в минимальный ДКА\\
+		Его таблица переходов:
+		\begin{tabular}{ | l | l | l | }
+			\hline
+			& a & b \\ \hline
+			1 (1) & 2,6,8 & - \\
+			2,6,8 (2) & 3,5,7,9 & - \\
+			3,5,7,9 (3) & 4 & 2,6,8 \\
+			4 (4) & - & 5,3 \\
+			5,3 (5) & 4 & 2,6,8\\
+			\hline
+		\end{tabular}\\
+		\digraph{3.2(b)}\\
+		{\large\item $(a+(a+b)(a+b)b)^*$} \\
+		Строим НКА по регулярному выражению\\
+		\digraph{3.3(a)}\\
+		Преобразуем в минимальный ДКА\\
+		Его таблица переходов:
+		\begin{tabular}{ | l | l | l | }
+			\hline
+			& a & b \\ \hline
+			1 (1) & 5,9 & 5 \\
+			5,9 (2) & 5,9,7 & 5,7 \\
+			5 (3) & 7 & 7 \\
+			5,9,7 (4) & 5,9,7 & 5,9,7 \\
+			5,7 (5) & 7 & 7,9\\
+			7 (6) & - & 9\\
+			7,9 (7) & 5,9 & 5,9\\
+			9 (1) & 5,9 & 5\\
+			\hline
+		\end{tabular}\\
+		\digraph{3.3(b)}\\
+		{\large\item $(b+c)((ab)^*c+(ba)^*)^*$} \\
+		Строим НКА по регулярному выражению\\
+		\digraph{3.4(a)}\\
+		Преобразуем в минимальный ДКА\\
+		Его таблица переходов:
+		\begin{tabular}{ | l | l | l | l | }
+			\hline
+			& a & b & c \\ \hline
+			1 (1) & - & 2 & 2 \\
+			2 (2) & 4 & 7 & - \\
+			7 (3) & 2 & - & - \\
+			4 (4) & - & 5 & - \\
+			5 (5) & 4 & - & 2 \\
+			\hline
+		\end{tabular}\\
+		\digraph{3.4(b)}\\
+		{\large\item $(a+b)^+(aa+bb+abab+baba)(a+b)^+$} \\
+		Строим НКА по регулярному выражению\\
+		\digraph{3.5(a)}\\
+		Преобразуем в минимальный ДКА\\
+		В виду огромного количества вершин НКА, я построил ДКА вручную руководствуясь здравым смыслом\\
+		\digraph{3.5(b)}\\
+	\end{enumerate}
+	{\Large\item Определить является ли язык регулярным}
+	\begin{enumerate}[label*=\arabic*.]
+	{\large\item $L=\{(aab)^nb(aba)^m |\  n\geq 2 , m\geq 2\}$} \\
+	\\
+		Данный язык регулярный, в доказательство этому построим ДКА распознающий его.\\
+		\digraph{4.1}\\
+	{\large\item $L=\{uaav\ |\ u\in\{a,b\}^*,v\in\{a,b\}^*, |u|_b\geq |v|_a \}$} \\
+	\\
+	Проверим лемму о разрастании,фиксируем $\forall n=N$ возьмём слово $\omega=b^{N+1}aaa^{N+1}, оно \in L, |\omega|=2N+4 $, так как в лемме $|xy|\leq N, \text{как бы мы не взяли } x , y,\ y=b^i \implies xy^kz \text{ выходит за пределы языка при } k=0 \implies$ язык L не регулярный\\
+	{\large\item $L=\{a^m\omega\ |\ \omega\in\{a,b\}^*, 1\leq |\omega| \leq m \}$} \\
+	\\
+	Проверим лемму о разрастании,фиксируем $\forall n=N$ возьмём слово $\alpha=a^{N+1}ba^{N},\ \alpha \in L, |\omega|=N+1 $, так как в лемме $|xy|\leq N, \text{как бы мы не взяли } x , y,\ y=a^i \implies xy^kz \text{ выходит за пределы языка при } k=0,\text{ так как тогда } |\alpha|>\text{количества букв а слева } \implies$ язык L не регулярный\\
+	{\large\item $L=\{a^kb^ma^n\ |\ k=n\ \lor \ m>0 \}$} \\
+	\\
+		Данный язык регулярный, в доказательство этому построим ДКА распознающий его.\\
+		\digraph{4.4}\\
+	{\large\item $L=\{ucv\ |\ u\in\{a,b\}^*, v\in\{a,b\}^*, u\neq v^R \}$} \\
+	\\
+	Докажем для $\bar{L}$. $\bar{L}=\{ucv\ |\ u\in\{a,b\}^*, v\in\{a,b\}^*, u=v^R \}$ Проверим лемму о разрастании,фиксируем $\forall n$ возьмём слово $\omega=b^ncb^n, оно \in \bar{L}, |\omega|=2n+1 $, так как в лемме $|xy|\leq n, \text{как бы мы не взяли } x , y,\ y=b^i \implies xy^kz \text{ выходит за пределы языка при } k>1 \implies$ язык $\bar{L}$ не регулярный $\implies$ язык $L$ не регулярный\\
+	\end{enumerate}
+\end{enumerate}
+
+\end{document}

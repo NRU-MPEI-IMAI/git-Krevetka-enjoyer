@@ -1,0 +1,46 @@
+digraph {
+	rankdir=LR;
+	margin=0.2;
+	size=5;
+	node [margin=0.08 shape=circle];
+	a4b2,a4b3,a4b4,a4b5,a4b6[margin=0 shape=doublecircle];
+	" "[color=white width=0];
+	" " -> a1b1;
+	a1b1 -> a2b2 [label="a"];
+	a1b1 -> a2b4 [label="b"];
+	a2b2 -> a3b1 [label="a"];
+	a2b2 -> a3b3 [label="b"];
+	a2b4 -> a3b3 [label="a"];
+	a2b4 -> a3b5 [label="b"];
+	a3b1 -> a4b2 [label="a"];
+	a3b1 -> a4b4 [label="b"];
+	a3b3 -> a4b4 [label="a"];
+	a3b3 -> a4b5 [label="b"];
+	a3b5 -> a4b6 [label="a"];
+	a3b5 -> a4b1 [label="b"];
+	a4b1 -> a5b2 [label="a"];
+	a4b1 -> a5b4 [label="b"];
+	a4b2 -> a5b1 [label="a"];
+	a4b2 -> a5b3 [label="b"];
+	a4b3 -> a5b4 [label="a"];
+	a4b3 -> a5b6 [label="b"];
+	a4b4 -> a5b3 [label="a"];
+	a4b4 -> a5b5 [label="b"];
+	a4b5 -> a5b6 [label="a"];
+	a4b5 -> a5b1 [label="b"];
+	a4b6 -> a5b5 [label="a"];
+	a4b6 -> a5b2 [label="b"];
+	a5b1 -> a4b2 [label="a"];
+	a5b1 -> a4b4 [label="b"];
+	a5b2 -> a4b1 [label="a"];
+	a5b2 -> a4b3 [label="b"];
+	a5b3 -> a4b4 [label="a"];
+	a5b3 -> a4b6 [label="b"];
+	a5b4 -> a4b3 [label="a"];
+	a5b4 -> a4b5 [label="b"];
+	a5b5 -> a4b6 [label="a"];
+	a5b5 -> a4b1 [label="b"];
+	a5b6 -> a4b5 [label="a"];
+	a5b6 -> a4b2 [label="b"];
+	
+}

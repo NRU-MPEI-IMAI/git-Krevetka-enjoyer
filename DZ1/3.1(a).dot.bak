@@ -1,0 +1,22 @@
+digraph {
+	rankdir=LR;
+	margin=0.2;
+	size=5;
+	node [margin=0.1 shape=circle];
+	12[margin=0 shape=doublecircle];
+	" "[color=white width=0];
+	" " -> 1;
+	1 -> 2 [label=<&#955;>];
+	1 -> 11 [label=<&#955;>];
+	2 -> 3 [label=<&#955;>];
+	2 -> 4 [label=<&#955;>];
+	3 -> 5 [label="a"];
+	5 -> 7 [label="b"];
+	7 -> 10 [label=<&#955;>];
+	4 -> 6 [label="a"];
+	6 -> 8 [label="b"];
+	8 -> 9 [label="a"];
+	9 -> 10 [label=<&#955;>];
+	10 -> 11 [label=<&#955;>];
+	11 -> 12 [label="a"];
+}

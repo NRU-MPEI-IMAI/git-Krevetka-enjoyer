@@ -1,0 +1,27 @@
+digraph {
+	rankdir=LR;
+	margin=0.2;
+	size=5;
+	node [margin=0.1 shape=circle];
+	"a0"[margin=0 shape=doublecircle];
+	" "[color=white width=0];
+	" " -> "a4";
+	"a0" ->  "a0"  [label="a"];
+	"a0" ->  "a0"  [label="b"];
+	"a1" ->  "a8"  [label="a"];
+	"a1" ->  "a3"  [label="b"];
+	"a2" ->  "a8"  [label="a"];
+	"a2" ->  "a6"  [label="b"];
+	"a3" ->  "a8"  [label="a"];
+	"a3" ->  "a8"  [label="b"];
+	"a4" ->  "a5"  [label="a"];
+	"a4" ->  "a5"  [label="b"];
+	"a5" ->  "a2"  [label="a"];
+	"a5" ->  "a7"  [label="b"];
+	"a6" ->  "a3"  [label="a"];
+	"a6" ->  "a8"  [label="b"];
+	"a7" ->  "a1"  [label="a"];
+	"a7" ->  "a8"  [label="b"];
+	"a8" ->  "a0"  [label="a"];
+	"a8" ->  "a0"  [label="b"];
+}

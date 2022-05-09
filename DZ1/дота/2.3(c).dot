@@ -1,0 +1,21 @@
+digraph {
+	rankdir=LR;
+	margin=0.2;
+	size=5;
+	node [margin=0.1 shape=circle];
+	a1b1[margin=0 shape=doublecircle];
+	" "[color=white width=0];
+	" " -> a1b1;
+	a1b1 -> a2b1 [label="a"];
+	a1b1 -> a1b2 [label="b"];
+	a2b1 -> a1b1 [label="a"];
+	a2b1 -> a2b2 [label="b"];
+	a1b2 -> a2b2 [label="a"];
+	a1b2 -> a1b3 [label="b"];
+	a2b2 -> a1b2 [label="a"];
+	a2b2 -> a2b3 [label="b"];
+	a1b3 -> a2b3 [label="a"];
+	a1b3 -> a1b1 [label="b"];
+	a2b3 -> a1b3 [label="a"];
+	a2b3 -> a2b1 [label="b"];
+}

@@ -1,0 +1,20 @@
+digraph {
+	rankdir=LR;
+	margin=0.2;
+	size=5;
+	node [margin=0.1 shape=circle];
+	7[margin=0 shape=doublecircle];
+	" "[color=white width=0];
+	" " -> 1;
+	1 -> 2 [label="b,c"];
+	2 -> 7 [label=<&#955;>];
+	2 -> 3 [label=<&#955;>];
+	2 -> 4 [label=<&#955;>];
+	3 -> 6 [label="b"];
+	3 -> 7 [label=<&#955;>];
+	6 -> 3 [label="a"];
+	4 -> 5 [label="a"];
+	5 -> 4 [label="b"];
+	4 -> 7 [label="c"];
+	7 -> 2 [label=<&#955;>];
+}
