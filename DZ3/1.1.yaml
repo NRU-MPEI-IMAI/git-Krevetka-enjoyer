@@ -1,0 +1,21 @@
+name: unary multiplication
+source code: |
+  input: '1111+111'
+  blank: ' '
+  start state: q0
+  table:
+    q0:
+      '1': {write: '1', R: q0}
+      '+': {write: '1', R: q1}
+      ' ': {write: ' ', R: q0}
+    q1:
+      '1': {write: '1', R: q1}
+      ' ': {write: ' ', L: q2}
+    q2:
+      '1': {write: ' ', L: done}
+    done:
+positions:
+  q0: {x: 498.57, y: 301.38, fixed: false}
+  q1: {x: 365.72, y: 351.88, fixed: false}
+  q2: {x: 303.02, y: 224.56, fixed: false}
+  done: {x: 419.99, y: 143.75, fixed: false}

@@ -1,0 +1,49 @@
+name: unary multiplication
+source code: |
+  input: '1111*111'
+  blank: ' '
+  start state: q0
+  table:
+    q0:
+      '1': {write: ' ', R: q6}
+    q1:
+      '1': {write: '1', R: q1}
+      '*': {write: '*', R: q1}
+      ' ': {write: '=', L: q2}
+      '=': {write: '=', L: q2}
+    q2:
+      '1': {write: '1', L: q2}
+      '*': {write: '*', R: q3}
+      '=': {write: '=', L: q2}
+      'B': {write: '1', R: q3}
+    q3:
+      '1': {write: 'B', R: q4}
+      '=': {write: '=', L: q5}
+    q4:
+      '1': {write: '1', R: q4}
+      ' ': {write: '1', L: q2}
+      '=': {write: '=', R: q4}
+    q5:
+      '1': {write: '1', L: q5}
+      '*': {write: '*', L: q5}
+      ' ': {write: ' ', R: q0} 
+    q6:
+      '1': {write: '1', R: q1}
+      '*': {write: ' ', R: q7}
+    q7:
+      '1': {write: ' ', R: q8} 
+    q8:
+      '1': {write: '1', R: q8}
+      '=': {write: '1', R: done}
+    done:
+positions:
+  q0: {x: 455.12, y: 278.35, fixed: false}
+  q1: {x: 248.66, y: 121.16, fixed: false}
+  q2: {x: 367.13, y: 34.34, fixed: false}
+  q3: {x: 509.78, y: 78.93, fixed: false}
+  q4: {x: 403.84, y: 169.31, fixed: false}
+  q5: {x: 584.47, y: 206.66, fixed: false}
+  q6: {x: 304.32, y: 256.52, fixed: false}
+  q7: {x: 237.42, y: 382.67, fixed: false}
+  q8: {x: 349.25, y: 472.12, fixed: false}
+  done: {x: 491.53, y: 454.46, fixed: false}

@@ -1,0 +1,11 @@
+name: divisible by 3
+source code: "input: '(c{cc[}c]c)' \r\nblank: ' '\r\nstart state: q0\r\ntable:\r\n  q0:\r\n      'c': {write: 'c', R: q0}\r\n      ' ': {write: ' ', L: qa}\r\n      '(': {write: 'A', R: q1}\r\n      '[': {write: 'B', R: q2}\r\n      '{': {write: 'C', R: q3}\r\n      ')': {write: ')', R: qr}\r\n      ']': {write: ']', R: qr}\r\n      '}': {write: '}', R: qr}\r\n  q1:\r\n      'c': {write: 'c', R: q1}\r\n      ' ': {write: ' ', L: qr}\r\n      '(': {write: 'A', R: q1}\r\n      '[': {write: 'B', R: q2}\r\n      '{': {write: 'C', R: q3}\r\n      ')': {write: 'c', L: q4}\r\n      ']': {write: 'c', L: qr}\r\n      '}': {write: 'c', L: qr}\r\n  q2:\r\n      'c': {write: 'c', R: q2}\r\n      ' ': {write: ' ', L: qr}\r\n      '(': {write: 'A', R: q1}\r\n      '[': {write: 'B', R: q2}\r\n      '{': {write: 'C', R: q3}\r\n      ']': {write: 'c', L: q4}\r\n      ')': {write: 'c', L: qr}\r\n      '}': {write: 'c', L: qr}\r\n  q3:\r\n      'c': {write: 'c', R: q3}\r\n      ' ': {write: ' ', L: qr}\r\n      '(': {write: 'A', R: q1}\r\n      '[': {write: 'B', R: q2}\r\n      '{': {write: 'C', R: q3}\r\n      '}': {write: 'c', L: q4}\r\n      ']': {write: 'c', L: qr}\r\n      ')': {write: 'c', L: qr}\r\n  q4:\r\n      'c': {write: 'c', L: q4}\r\n      'A': {write: 'c', L: q5}\r\n      'B': {write: 'c', L: q5}\r\n      'C': {write: 'c', L: q5}\r\n  q5:\r\n      'c': {write: 'c', L: q5}\r\n      ' ': {write: ' ', R: q0}\r\n      'A': {write: 'A', R: q1}\r\n      'B': {write: 'B', L: q2}\r\n      'C': {write: 'C', L: q3}\r\n  qr:\r\n  qa:\r\n    "
+positions:
+  q0: {x: 230, y: 250}
+  q1: {x: 298.05, y: 324.83}
+  q2: {x: 732.75, y: 251.87}
+  q3: {x: 369.72, y: 36.89}
+  q4: {x: 688.39, y: 398.99}
+  q5: {x: 132.04, y: 420.85}
+  qr: {x: 692.28, y: 27.7}
+  qa: {x: 150.47, y: 122.81}
